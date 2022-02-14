@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 10 feb 2022 13:41:30 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="biblio_hibernate" dynamic-insert="false" dynamic-update="false" mutable="true" name="pojos.Libro" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="libro">
+        <id name="idLibro" type="java.lang.Integer">
+            <column name="ID_LIBRO"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="titulo" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="TITULO" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="numEjemplares" optimistic-lock="true" type="int" unique="false">
+            <column name="NUM_EJEMPLARES" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="editorial" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="EDITORIAL" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="numPaginas" optimistic-lock="true" type="int" unique="false">
+            <column name="NUM_PAGINAS" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="anioEdicion" optimistic-lock="true" type="int" unique="false">
+            <column name="ANIO_EDICION" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="prestamos" optimistic-lock="true" sort="unsorted" table="prestamo">
+            <key on-delete="noaction">
+                <column name="ID_LIBRO" not-null="true"/>
+            </key>
+            <one-to-many class="pojos.Prestamo" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

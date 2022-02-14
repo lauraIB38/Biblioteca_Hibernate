@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 10 feb 2022 13:41:30 by Hibernate Tools 5.5.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="biblio_hibernate" dynamic-insert="false" dynamic-update="false" mutable="true" name="pojos.Prestamo" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="prestamo">
+        <id name="idPrestamo" type="java.lang.Integer">
+            <column name="ID_PRESTAMO"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="pojos.Libro" embed-xml="true" fetch="select" insert="true" name="libro" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="ID_LIBRO" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="pojos.Socio" embed-xml="true" fetch="select" insert="true" name="socio" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="ID_SOCIO" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="fechaInicio" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="FECHA_INICIO" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="fechaFin" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="`FECHA _FIN`" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
